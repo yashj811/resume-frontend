@@ -1,0 +1,13 @@
+.contact-form{
+    margin: 10px auto 10px auto;
+}
+
+.ant-input-affix-wrapper{
+    margin:10px !important;
+    width:70% !important;
+}
+
+.contact-btn{
+    margin: 20px 10px;
+    padding: 7px 55px 7px 55px;
+}

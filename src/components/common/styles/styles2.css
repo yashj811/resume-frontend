@@ -1,0 +1,16 @@
+input{
+    font-size: 13px !important;
+}
+
+input:focus{
+    border-color: #6ba8a9 !important;
+    box-shadow: none !important;
+}
+
+label{
+    font-size: 12px !important;
+}
+
+.modal-margin{
+    margin-left:10px !important;
+}
