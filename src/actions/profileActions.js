@@ -2,6 +2,7 @@ import axios from 'axios';
 import { SET_ERRORS } from './errorActions';
 import { getCookie } from '../utils/Helpers';
 
+export const LOADING = 'LOADING';
 export const CREATE_PROFILE = 'CREATE_PROFILE';
 export const GET_PROFILE = 'GET_PROFILE';
 export const CLEAR_PROFILE = 'CLEAR_PROFILE';
@@ -22,6 +23,7 @@ export const ClearProfile = () => {
 };
 
 export const GetProfile = () => dispatch => {
+  dispatch(Loading());
   const cookieChecked = getCookie('token');
   axios({
     method: 'GET',
@@ -55,5 +57,11 @@ export const CreateWork = data => {
   return {
     type: CREATE_WORK,
     payload: data,
+  };
+};
+
+export const Loading = () => {
+  return {
+    type: LOADING,
   };
 };

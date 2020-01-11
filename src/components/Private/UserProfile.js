@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, Fragment } from 'react';
 import { connect } from 'react-redux';
 import { Card } from 'antd';
 import { withRouter } from 'react-router-dom';
@@ -7,6 +7,7 @@ import classnames from 'classnames';
 import { CreateProfile } from '../../actions/profileActions';
 import { SetErrors, RemoveErrors } from '../../actions/errorActions';
 import ResumeFormGroup from '../common/ResumeFormGroup';
+import LoadingScreen from '../common/LoadingScreen';
 import './css/Details.css';
 
 const UserProfile = props => {
@@ -75,116 +76,125 @@ const UserProfile = props => {
   const { errors } = props.errors;
 
   return (
-    <div className='container details'>
-      {create && (
-        <div className='detail-card'>
-          <Card style={{ width: 360 }}>
-            <form className='res-box'>
-              <ResumeFormGroup
-                name={'name'}
-                type={'text'}
-                label={'Name'}
-                placeholder={'Enter you name'}
-                id={'InputName'}
-                onChange={handleChange}
-                errors={errors.name}
-                value={name}
-              />
-              <ResumeFormGroup
-                name={'address'}
-                type={'text'}
-                label={'Address'}
-                placeholder={'Enter you address'}
-                id={'InputAddress'}
-                onChange={handleChange}
-                errors={errors.address}
-                value={address}
-              />
-              <ResumeFormGroup
-                name={'country'}
-                type={'text'}
-                label={'Country'}
-                placeholder={'Country'}
-                id={'InputCountry'}
-                onChange={handleChange}
-                errors={errors.country}
-                value={country}
-              />
+    <Fragment>
+      {props.profile.isLoading ? (
+        <LoadingScreen />
+      ) : (
+        <div className='container details'>
+          {create && !props.profile.isLoading && (
+            <div className='detail-card'>
+              <Card style={{ width: 360 }}>
+                <form className='res-box'>
+                  <ResumeFormGroup
+                    name={'name'}
+                    type={'text'}
+                    label={'Name'}
+                    placeholder={'Enter you name'}
+                    id={'InputName'}
+                    onChange={handleChange}
+                    errors={errors.name}
+                    value={name}
+                  />
+                  <ResumeFormGroup
+                    name={'address'}
+                    type={'text'}
+                    label={'Address'}
+                    placeholder={'Enter you address'}
+                    id={'InputAddress'}
+                    onChange={handleChange}
+                    errors={errors.address}
+                    value={address}
+                  />
+                  <ResumeFormGroup
+                    name={'country'}
+                    type={'text'}
+                    label={'Country'}
+                    placeholder={'Country'}
+                    id={'InputCountry'}
+                    onChange={handleChange}
+                    errors={errors.country}
+                    value={country}
+                  />
 
-              <ResumeFormGroup
-                name={'state'}
-                type={'text'}
-                label={'State'}
-                placeholder={'State'}
-                id={'InputState'}
-                onChange={handleChange}
-                errors={errors.state}
-                value={state}
-              />
-              <ResumeFormGroup
-                name={'city'}
-                type={'text'}
-                label={'City'}
-                placeholder={'City'}
-                id={'InputCity'}
-                onChange={handleChange}
-                errors={errors.city}
-                value={city}
-              />
-              <ResumeFormGroup
-                name={'pincode'}
-                type={'text'}
-                label={'Pincode'}
-                placeholder={'Pincode'}
-                id={'InputPincode'}
-                onChange={handleChange}
-                errors={errors.pincode}
-                value={pincode}
-              />
-            </form>
-          </Card>
-        </div>
-      )}
-      {!create && !props.profile.isLoading && (
-        <div className='detail-card'>
-          <Card style={{ width: 360 }}>
-            <div>
-              <p>{profile.name}</p>
-              <p>{profile.address}</p>
-              <p>{profile.state}</p>
-              <p>{profile.city}</p>
-              <p>{profile.country}</p>
-              <p>{profile.pincode}</p>
+                  <ResumeFormGroup
+                    name={'state'}
+                    type={'text'}
+                    label={'State'}
+                    placeholder={'State'}
+                    id={'InputState'}
+                    onChange={handleChange}
+                    errors={errors.state}
+                    value={state}
+                  />
+                  <ResumeFormGroup
+                    name={'city'}
+                    type={'text'}
+                    label={'City'}
+                    placeholder={'City'}
+                    id={'InputCity'}
+                    onChange={handleChange}
+                    errors={errors.city}
+                    value={city}
+                  />
+                  <ResumeFormGroup
+                    name={'pincode'}
+                    type={'text'}
+                    label={'Pincode'}
+                    placeholder={'Pincode'}
+                    id={'InputPincode'}
+                    onChange={handleChange}
+                    errors={errors.pincode}
+                    value={pincode}
+                  />
+                </form>
+              </Card>
             </div>
-          </Card>
-        </div>
-      )}
-      <div className='d-flex justify-content-center user-btn-grp mb-5'>
-        <button
-          type='button'
-          disabled={create}
-          onClick={handleClick}
-          className='btn btn-info detail-btn'
-        >
-          Edit
-        </button>
-        {create && (
-          <div className={classnames('save-canc-btn', { slide_back: !create })}>
-            <button className='img-btn cross-btn'>
-              <img src={require('../../images/icons/cross.png')} onClick={handleCancel} />
-            </button>
+          )}
+          {!create && !props.profile.isLoading && (
+            <div className='detail-card'>
+              <Card style={{ width: 360 }}>
+                <div>
+                  <p>{profile.name}</p>
+                  <p>{profile.address}</p>
+                  <p>{profile.state}</p>
+                  <p>{profile.city}</p>
+                  <p>{profile.country}</p>
+                  <p>{profile.pincode}</p>
+                </div>
+              </Card>
+            </div>
+          )}
+          <div className='d-flex justify-content-center user-btn-grp mb-5'>
             <button
               type='button'
               disabled={create}
-              onClick={handleSubmit}
-              className='img-btn tick-btn'
+              onClick={handleClick}
+              className='btn btn-info detail-btn'
             >
-              <img src={require('../../images/icons/check.png')} />
+              Edit
             </button>
+            {create && (
+              <div className={classnames('save-canc-btn', { slide_back: !create })}>
+                <button className='img-btn cross-btn'>
+                  <img
+                    src={require('../../images/icons/cross.png')}
+                    onClick={handleCancel}
+                  />
+                </button>
+                <button
+                  type='button'
+                  disabled={create}
+                  onClick={handleSubmit}
+                  className='img-btn tick-btn'
+                >
+                  <img src={require('../../images/icons/check.png')} />
+                </button>
+              </div>
+            )}
           </div>
-        )}
-      </div>
-    </div>
+        </div>
+      )}
+    </Fragment>
   );
 };
 const mapStateToProps = state => ({

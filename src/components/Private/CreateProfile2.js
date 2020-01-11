@@ -22,6 +22,7 @@ class Sider extends React.Component {
 
   handleClick = e => {
     this.setState({ value: e.item.props.name });
+    this.props.GetProfile();
   };
 
   render() {
