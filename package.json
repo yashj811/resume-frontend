@@ -13,6 +13,7 @@
     "classnames": "^2.2.6",
     "file-saver": "^2.0.2",
     "js-cookie": "^2.2.1",
+    "moment": "^2.24.0",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
     "react-loadingg": "^1.6.2",

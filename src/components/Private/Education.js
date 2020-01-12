@@ -1,9 +1,9 @@
 import React, { useState, useEffect, Fragment } from 'react';
 import { connect } from 'react-redux';
 import axios from 'axios';
-import { Card } from 'antd';
+import moment from 'moment';
 import { Modal } from 'antd';
-import { CreateEducation, GetProfile } from '../../actions/profileActions';
+import { GetProfile } from '../../actions/profileActions';
 import { SetErrors, RemoveErrors } from '../../actions/errorActions';
 import HorizontalFormGroup from '../common/HorizontalFormGroup';
 import './css/ModalForm.css';
@@ -29,9 +29,9 @@ const Education = props => {
     };
   }, []);
 
-  useEffect(() => {
-    console.log('count changed', props.profile.profile);
-  }, [props.profile.profile]);
+  // useEffect(() => {
+  //   console.log('count changed', props.profile.profile);
+  // }, [props.profile.profile]);
 
   const handleChange = e => {
     setValues({ ...values, [e.target.name]: e.target.value });
@@ -167,13 +167,15 @@ const Education = props => {
           {profile.education.map((data, index) => {
             return (
               <div key={`${index}`} className='col-6 edu-card'>
-                <Card style={{ width: 360 }}>
-                  <p>{data.name}</p>
-                  <p>{data.course}</p>
-                  <p>{`${data.from} - ${data.to}`}</p>
-                  <p>{data.city}</p>
-                  <p>{data.state}</p>
-                </Card>
+                <div className='edu-box'>
+                  <div className='edu-name'>{data.name}</div>
+                  <div className='edu-title'>{data.course}</div>
+                  <div className='edu-date'>{`${moment(data.from).format(
+                    'YYYY',
+                  )} - ${moment(data.to).format('YYYY')}`}</div>
+                  <div className='edu-city'>{data.city + ', ' + data.state}</div>
+                  <div className='edu-country'>{data.country}</div>
+                </div>
               </div>
             );
           })}
@@ -189,7 +191,6 @@ const mapStateToProps = state => ({
 });
 
 export default connect(mapStateToProps, {
-  CreateEducation,
   SetErrors,
   RemoveErrors,
   GetProfile,

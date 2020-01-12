@@ -4,7 +4,7 @@ import { Card } from 'antd';
 import { withRouter } from 'react-router-dom';
 import axios from 'axios';
 import classnames from 'classnames';
-import { CreateProfile } from '../../actions/profileActions';
+import { CreateProfile, GetProfile } from '../../actions/profileActions';
 import { SetErrors, RemoveErrors } from '../../actions/errorActions';
 import ResumeFormGroup from '../common/ResumeFormGroup';
 import LoadingScreen from '../common/LoadingScreen';
@@ -65,7 +65,8 @@ const UserProfile = props => {
     })
       .then(response => {
         props.CreateProfile(response.data);
-        // props.history.push('/');
+        props.GetProfile();
+        setValues({ ...values, create: false });
       })
       .catch(error => {
         props.SetErrors(error.response.data);
@@ -151,17 +152,13 @@ const UserProfile = props => {
             </div>
           )}
           {!create && !props.profile.isLoading && (
-            <div className='detail-card'>
-              <Card style={{ width: 360 }}>
-                <div>
-                  <p>{profile.name}</p>
-                  <p>{profile.address}</p>
-                  <p>{profile.state}</p>
-                  <p>{profile.city}</p>
-                  <p>{profile.country}</p>
-                  <p>{profile.pincode}</p>
-                </div>
-              </Card>
+            <div className='edu-card'>
+              <div className='edu-box'>
+                <div className='edu-name'>{profile.name}</div>
+                <div className='edu-title'>{profile.address}</div>
+                <div className='edu-city'>{profile.city + ', ' + profile.state}</div>
+                <div className='edu-country'>{profile.country}</div>
+              </div>
             </div>
           )}
           <div className='d-flex justify-content-center user-btn-grp mb-5'>
@@ -177,17 +174,17 @@ const UserProfile = props => {
               <div className={classnames('save-canc-btn', { slide_back: !create })}>
                 <button className='img-btn cross-btn'>
                   <img
+                    alt='cancel'
                     src={require('../../images/icons/cross.png')}
                     onClick={handleCancel}
                   />
                 </button>
-                <button
-                  type='button'
-                  disabled={create}
-                  onClick={handleSubmit}
-                  className='img-btn tick-btn'
-                >
-                  <img src={require('../../images/icons/check.png')} />
+                <button type='button' className='img-btn tick-btn'>
+                  <img
+                    onClick={handleSubmit}
+                    alt='check'
+                    src={require('../../images/icons/check.png')}
+                  />
                 </button>
               </div>
             )}
@@ -202,6 +199,9 @@ const mapStateToProps = state => ({
   errors: state.errors,
 });
 
-export default connect(mapStateToProps, { CreateProfile, RemoveErrors, SetErrors })(
-  withRouter(UserProfile),
-);
+export default connect(mapStateToProps, {
+  CreateProfile,
+  GetProfile,
+  RemoveErrors,
+  SetErrors,
+})(withRouter(UserProfile));

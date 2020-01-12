@@ -16,7 +16,6 @@ import Work from './components/Private/Work';
 import Sider from './components/Private/CreateProfile2';
 import Templates from './components/Templates/Templates';
 import { getCookie, setAuthHeader } from './utils/Helpers';
-import { GetProfile } from './actions/profileActions';
 
 const Routes = () => {
   useEffect(() => {

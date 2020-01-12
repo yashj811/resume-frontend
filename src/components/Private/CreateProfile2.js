@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import Layout from '../../Layout';
-import { Menu, Icon } from 'antd';
+import { Menu } from 'antd';
 import Education from './Education';
 import Work from './Work';
 import Header from './Header';

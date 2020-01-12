@@ -139,12 +139,13 @@ const Header = props => {
               <div className='save-canc-btn'>
                 <button className='img-btn cross-btn'>
                   <img
+                    alt='cancel'
                     src={require('../../images/icons/cross.png')}
                     onClick={handleCancel}
                   />
                 </button>
                 <button type='button' onClick={handleSubmit} className='img-btn tick-btn'>
-                  <img src={require('../../images/icons/check.png')} />
+                  <img alt='check' src={require('../../images/icons/check.png')} />
                 </button>
               </div>
             )}

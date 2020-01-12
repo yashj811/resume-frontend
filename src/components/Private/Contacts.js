@@ -82,9 +82,6 @@ const Contacts = props => {
       });
   };
 
-  const { profile } = props.profile;
-  const { errors } = props.errors;
-
   return (
     <Fragment>
       {props.profile.isLoading ? (
@@ -99,7 +96,7 @@ const Contacts = props => {
                 value={email}
                 id={'email'}
                 name={'email'}
-                prefix={<img src={require('../../images/icons/email.png')} />}
+                prefix={<img alt='email' src={require('../../images/icons/email.png')} />}
                 disabled={readOnly}
               />
               <Input
@@ -109,7 +106,9 @@ const Contacts = props => {
                 id={'mobile'}
                 name={'mobile'}
                 disabled={readOnly}
-                prefix={<img src={require('../../images/icons/mobile.png')} />}
+                prefix={
+                  <img alt='mobile' src={require('../../images/icons/mobile.png')} />
+                }
               />
               <Input
                 placeholder='Facbook'
@@ -118,7 +117,9 @@ const Contacts = props => {
                 id={'facebook'}
                 name={'facebook'}
                 disabled={readOnly}
-                prefix={<img src={require('../../images/icons/facebook.png')} />}
+                prefix={
+                  <img alt='facebook' src={require('../../images/icons/facebook.png')} />
+                }
               />
 
               <Input
@@ -128,7 +129,12 @@ const Contacts = props => {
                 id={'insta'}
                 disabled={readOnly}
                 name={'insta'}
-                prefix={<img src={require('../../images/icons/instagram.png')} />}
+                prefix={
+                  <img
+                    alt='instagram'
+                    src={require('../../images/icons/instagram.png')}
+                  />
+                }
               />
             </div>
             <div className='col-6'>
@@ -139,7 +145,9 @@ const Contacts = props => {
                 id={'twitter'}
                 name={'twitter'}
                 disabled={readOnly}
-                prefix={<img src={require('../../images/icons/twitter.png')} />}
+                prefix={
+                  <img alt='twitter' src={require('../../images/icons/twitter.png')} />
+                }
               />
               <Input
                 placeholder='Linkedin'
@@ -148,7 +156,9 @@ const Contacts = props => {
                 id={'linkedin'}
                 disabled={readOnly}
                 name={'linkedin'}
-                prefix={<img src={require('../../images/icons/linkedin.png')} />}
+                prefix={
+                  <img alt='linkedin' src={require('../../images/icons/linkedin.png')} />
+                }
               />
               <Input
                 placeholder='Medium'
@@ -157,7 +167,9 @@ const Contacts = props => {
                 id={'medium'}
                 onChange={handleChange}
                 name={'medium'}
-                prefix={<img src={require('../../images/icons/medium.png')} />}
+                prefix={
+                  <img alt='medium' src={require('../../images/icons/medium.png')} />
+                }
               />
               <Input
                 placeholder='Github'
@@ -166,7 +178,9 @@ const Contacts = props => {
                 id={'github'}
                 onChange={handleChange}
                 name={'github'}
-                prefix={<img src={require('../../images/icons/github.png')} />}
+                prefix={
+                  <img alt='github' src={require('../../images/icons/github.png')} />
+                }
               />
             </div>
           </div>
@@ -183,12 +197,13 @@ const Contacts = props => {
               <div className='save-canc-btn'>
                 <button className='img-btn cross-btn'>
                   <img
+                    alt='cancel'
                     src={require('../../images/icons/cross.png')}
                     onClick={handleCancel}
                   />
                 </button>
                 <button type='submit' className='img-btn tick-btn'>
-                  <img src={require('../../images/icons/check.png')} />
+                  <img alt='check' src={require('../../images/icons/check.png')} />
                 </button>
               </div>
             )}
