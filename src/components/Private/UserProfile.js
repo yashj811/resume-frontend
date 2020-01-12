@@ -1,6 +1,6 @@
 import React, { useState, useEffect, Fragment } from 'react';
 import { connect } from 'react-redux';
-import { Card } from 'antd';
+import { Card, Avatar } from 'antd';
 import { withRouter } from 'react-router-dom';
 import axios from 'axios';
 import classnames from 'classnames';
@@ -9,6 +9,7 @@ import { SetErrors, RemoveErrors } from '../../actions/errorActions';
 import ResumeFormGroup from '../common/ResumeFormGroup';
 import LoadingScreen from '../common/LoadingScreen';
 import './css/Details.css';
+var userImg = require('../../images/icons/user.png');
 
 const UserProfile = props => {
   const [values, setValues] = useState({
@@ -152,12 +153,17 @@ const UserProfile = props => {
             </div>
           )}
           {!create && !props.profile.isLoading && (
-            <div className='edu-card'>
-              <div className='edu-box'>
-                <div className='edu-name'>{profile.name}</div>
-                <div className='edu-title'>{profile.address}</div>
-                <div className='edu-city'>{profile.city + ', ' + profile.state}</div>
-                <div className='edu-country'>{profile.country}</div>
+            <div className='user-box'>
+              <div className='user-card'>
+                <div className='card-1'>
+                  <img className='card-img' src={userImg} alt='user' />{' '}
+                </div>
+                <div className='card-2'>
+                  <div className='user-name'>{profile.name}</div>
+                  <div className='user-address'>{profile.address}</div>
+                  <div className='user-city'>{profile.city + ', ' + profile.state}</div>
+                  <div className='user-country'>{profile.country}</div>
+                </div>
               </div>
             </div>
           )}
@@ -166,7 +172,7 @@ const UserProfile = props => {
               type='button'
               disabled={create}
               onClick={handleClick}
-              className='btn btn-info detail-btn'
+              className='btn btn-clr detail-btn'
             >
               Edit
             </button>

@@ -130,7 +130,7 @@ const Header = props => {
             <button
               type='button'
               onClick={handleClick}
-              className='btn btn-info contact-btn'
+              className='btn btn-clr contact-btn'
               disabled={create}
             >
               Edit

@@ -188,7 +188,7 @@ const Contacts = props => {
             <button
               type='button'
               onClick={handleEdit}
-              className='btn btn-info contact-btn'
+              className='btn btn-clr contact-btn'
               disabled={!readOnly}
             >
               Edit

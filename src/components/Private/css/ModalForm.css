@@ -35,9 +35,10 @@
 
 .edu-box:hover {
   transform: scale(1.1);
-  background: rgb(107, 197, 152);
+  /* background: rgb(107, 197, 152); */
+  background: rgba(127, 205, 145, 0.9);
   color: white;
-  box-shadow: 3px 3px 15px rgba(107, 197, 152, 0.8);
+  box-shadow: 3px 3px 15px rgba(91, 86, 86, 0.8);
 }
 
 .ant-input-affix-wrapper {
@@ -47,4 +48,67 @@
 
 .ant-input-affix-wrapper:hover {
   transform: scale(1.1);
+}
+
+.user-box {
+  display: flex;
+  flex-direction: row;
+  min-height: 100px;
+}
+
+.user-card {
+  width: 50rem;
+  display: flex;
+  flex-direction: row;
+  transition: 0.4s ease-in-out;
+  cursor: pointer;
+  box-shadow: 3px 3px 15px rgba(0, 0, 0, 0.4);
+}
+
+.card-1 {
+  width: 50%;
+  margin: 20px 0px 20px 40px;
+}
+
+.card-2 {
+  width: 50%;
+  margin: 20px 5px 20px 0px;
+}
+
+.user-card .card-img {
+  width: 60%;
+  height: 15rem;
+  padding: 25px;
+  border-radius: 50%;
+  object-fit: contain;
+  border: 0.3px solid rgba(0, 0, 0, 0.1);
+  box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.1);
+}
+
+.user-name {
+  font-size: 3rem;
+}
+
+.user-address {
+  font-size: 1rem;
+  margin: 25px 0 0 0;
+  font-style: italic;
+}
+
+.user-state,
+.user-city,
+.user-country {
+  font-size: 1rem;
+  font-style: italic;
+}
+
+.user-country {
+  margin-bottom: 30px;
+}
+
+.user-card:hover {
+  transform: scale(1.1);
+  background: rgba(127, 205, 145, 0.7);
+  color: #4d4646;
+  box-shadow: 3px 3px 15px rgba(91, 86, 86, 0.8);
 }

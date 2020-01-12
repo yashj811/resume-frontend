@@ -58,7 +58,7 @@ const Work = props => {
   const { errors } = props.errors;
   return (
     <Fragment>
-      <button type='button' onClick={openModal} className='btn btn-info '>
+      <button type='button' onClick={openModal} className='btn btn-clr '>
         Add Work
       </button>
       <Modal
@@ -66,10 +66,10 @@ const Work = props => {
         centered
         visible={visible}
         footer={[
-          <button key='back' className='btn btn-info' onClick={handleCancel}>
+          <button key='back' className='btn btn-clr' onClick={handleCancel}>
             Return
           </button>,
-          <button key='save' className='btn btn-info' onClick={handleSubmit}>
+          <button key='save' className='btn btn-clr' onClick={handleSubmit}>
             Save
           </button>,
         ]}

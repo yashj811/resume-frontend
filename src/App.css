@@ -1,10 +1,60 @@
 body {
   font-family: 'Poppins', sans-serif !important;
+  /* background-color: #f5eaea !important; */
 }
+/* 
+.navbar {
+  background-color: rgba(91, 86, 86, 0.6) !important;
+  margin: 0 !important;
+} */
 
 ::placeholder {
   color: rgba(0, 0, 0, 0.4);
   font-size: 12px;
+}
+
+.btn-clr {
+  background-color: #4d4646;
+  color: #fff;
+  font-size: 0.9rem;
+  transition: 0.3s ease-in-out;
+  font-weight: 100;
+  font-variant: normal;
+}
+
+.btn-clr:hover {
+  background-color: rgba(77, 70, 70, 0.8);
+  transform: scale(1.07);
+  color: #fff;
+}
+
+.btn-clr:focus {
+  background-color: rgba(77, 70, 70, 1);
+  outline: none;
+  box-shadow: none;
+  color: #fff;
+}
+.ant-menu {
+  margin-top: 20px !important;
+  padding: 40px 0 !important;
+}
+.ant-menu-item-selected {
+  color: rgba(77, 70, 70, 1) !important;
+}
+
+.ant-menu-item:hover,
+.ant-menu-item-active,
+.ant-menu:not(.ant-menu-inline) .ant-menu-submenu-open,
+.ant-menu-submenu-active,
+.ant-menu-submenu-title:hover {
+  color: rgba(77, 70, 70, 1) !important;
+}
+.ant-menu-item::after {
+  border-right: 3px solid rgba(77, 70, 70, 0.7) !important;
+}
+
+.ant-menu:not(.ant-menu-horizontal) .ant-menu-item-selected {
+  background-color: rgba(127, 205, 145, 0.7) !important;
 }
 
 .form-box {
@@ -22,7 +72,7 @@ body {
   margin: auto;
 }
 .main-box {
-  background-color: #1d4d4f;
+  background-color: #4d4646;
   min-width: 1024px;
   min-height: 760px;
   padding: 50px;
@@ -133,6 +183,9 @@ i {
 .navbar-brand {
   color: rgba(0, 0, 0, 0.5);
 }
+.nav-link {
+  font-size: 1.1rem;
+}
 
 .nav-item,
 .navbar-brand {
@@ -140,7 +193,7 @@ i {
 }
 
 .navbar-brand {
-  font-size: 1rem;
+  font-size: 2rem;
 }
 
 .nav-link:hover {
